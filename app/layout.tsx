@@ -5,6 +5,7 @@ import DogsProvider from "./providers/dogs-provider";
 import { fetchDogs } from "./actions";
 
 import Header from "./components/header";
+import ThemeProvider from "./providers/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +34,12 @@ export default async function RootLayout({
       <body
         className={`bg-[#FED253] text-[#000] flex flex-col items-center h-full ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <DogsProvider initialDogs={initialDogs}>
-          <Header />
-          {children}
-        </DogsProvider>
+        <ThemeProvider>
+          <DogsProvider initialDogs={initialDogs}>
+            <Header />
+            {children}
+          </DogsProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

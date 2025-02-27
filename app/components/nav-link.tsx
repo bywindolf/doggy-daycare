@@ -11,7 +11,6 @@ interface NavItemProps {
 export default function NavItem({ href, children }: NavItemProps) {
   const pathname = usePathname();
   const isActive = pathname === href;
-  const className = isActive ? "" : "";
 
   return (
     <li>
