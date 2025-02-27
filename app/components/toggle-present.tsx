@@ -23,10 +23,8 @@ export default function TogglePresent({ chipNumber }: TogglePresentProps) {
           checked={currentDog.present ?? false} // ✅ Uses correct state
           onChange={() => togglePresent(chipNumber)}
         />
-        <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
-        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-          Checked toggle
-        </span>
+        <div className="relative w-20 h-10 bg-gray-200 rounded-full peer peer-focus:ring-12 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-200 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-8 after:w-8 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-black"></div>
+        <span className="ms-3 text-sm font-bold text-gray-90">Present</span>
       </label>
     </>
   );

@@ -5,6 +5,10 @@ import { Dog } from "../interfaces";
 type DogContextType = {
   dogs: Dog[];
   togglePresent: (chipNumber: string) => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  sortOrder: "asc" | "desc";
+  setSortOrder: React.Dispatch<React.SetStateAction<"asc" | "desc">>;
 };
 
 const DogsContext = createContext<DogContextType | undefined>(undefined);
@@ -22,7 +26,12 @@ export default function DogsProvdider({
   children: React.ReactNode;
   initialDogs?: Dog[];
 }) {
+  //Initial dogs
   const [dogs, setDogs] = useState<Dog[]>(initialDogs);
+  // Searchterm state
+  const [searchTerm, setSearchTerm] = useState("");
+  // Sort order state
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   const togglePresent = (chipNumber: string) => {
     setDogs((prevDogs) =>
@@ -34,7 +43,16 @@ export default function DogsProvdider({
 
   // console.log(dogs);
   return (
-    <DogsContext.Provider value={{ dogs, togglePresent }}>
+    <DogsContext.Provider
+      value={{
+        dogs,
+        togglePresent,
+        searchTerm,
+        setSearchTerm,
+        sortOrder,
+        setSortOrder,
+      }}
+    >
       {children}
     </DogsContext.Provider>
   );

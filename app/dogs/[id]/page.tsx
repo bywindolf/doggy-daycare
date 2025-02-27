@@ -19,11 +19,11 @@ export default function Page({ params }: { params: { id: string } }) {
   const nextDog =
     currentDogIndex < dogs.length - 1 ? dogs[currentDogIndex + 1] : null;
 
-  const { name, breed, age, img, description, present } = currentDog;
+  const { name, breed, age, img, owner, description } = currentDog;
 
   return (
-    <main className="flex flex-col bg-slate-100">
-      <div className="flex flex-col">
+    <main className="flex flex-col min-h-screen justify-center max-w-screen-md">
+      <div className="flex flex-col rounded-3xl overflow-hidden shadow-orange-800 shadow-2xl">
         <Image
           src={img}
           width={1000}
@@ -31,17 +31,46 @@ export default function Page({ params }: { params: { id: string } }) {
           alt={name}
           className="aspect-square object-cover max-w-full h-auto"
         />
+        <div className="">
+          <div className="flex justify-between p-8 bg-opacity-10 bg-black">
+            <h1 className="text-5xl font-bold">{name}</h1>
+            <TogglePresent chipNumber={chipNumber} />
+          </div>
+          <div className="grid grid-cols-2 gap-x-8 p-8 text-xl">
+            <ul className="space-y-2">
+              <li>
+                <span className="font-bold">Name:</span>
+                <p>{name}</p>
+              </li>
+              <li>
+                <span className="font-bold">Breed:</span>
+                <p>{breed}</p>
+              </li>
+              <li>
+                <span className="font-bold">Age:</span>
+                <p>{age}</p>
+              </li>
+            </ul>
+            <ul className="space-y-2">
+              <li>
+                <span className="font-bold">Owner:</span>
+                <p>
+                  {owner.name} {owner.lastName}
+                </p>
+              </li>
+              <li>
+                <span className="font-bold">Phone:</span>
+                <p>{owner.phoneNumber}</p>
+              </li>
+              <li>
+                <span className="font-bold">E-mail:</span>
+                <p>unknow@mail.com</p>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-        <h1>{name}</h1>
-        <p>{description}</p>
-        <p>Chip Number: {chipNumber}</p>
-        <p>Breed: {breed}</p>
-        <p>Age: {age}</p>
-        <p>Present: {present ? "Yes" : "No"}</p>
-
-        <TogglePresent chipNumber={chipNumber} />
-
-        <div>
+        <div className="p-8 flex gap-8 justify-center">
           {prevDog && <Link href={`/dogs/${prevDog.chipNumber}`}>Prev</Link>}
           {nextDog && <Link href={`/dogs/${nextDog.chipNumber}`}>Next</Link>}
         </div>

@@ -32,14 +32,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-[#FED253] text-[#000] flex flex-col items-center h-full ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`mx-8 flex flex-col items-center h-full ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          <DogsProvider initialDogs={initialDogs}>
-            <Header />
-            {children}
-          </DogsProvider>
-        </ThemeProvider>
+        <DogsProvider initialDogs={initialDogs}>
+          <Header />
+          {children}
+        </DogsProvider>
       </body>
     </html>
   );

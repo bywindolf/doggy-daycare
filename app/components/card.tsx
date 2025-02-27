@@ -14,7 +14,11 @@ export default function Card({
   const fullNameOwner = owner.name + " " + owner.lastName;
 
   return (
-    <li className={`border-8 ${present ? " border-cyan-700" : "none"}`}>
+    <li
+      className={` outline outline-8 rounded-2xl${
+        present ? " " : " outline-background"
+      }`}
+    >
       <Link href={`dogs/${chipNumber}`}>
         <Image
           src={img}
